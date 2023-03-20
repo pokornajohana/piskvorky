@@ -1,20 +1,23 @@
 h1 {
   font-family: Lobster;
+  font-size: 40px;
+  margin: 15px;
+
 }
 
 body {
-  display: block;
+  display: flex;
   background-image: linear-gradient(#615dad, #ffc8da);
   justify-content: center;
-  align-items: center;
-
+  /* align-items: center; */
+  align-content: center;
+  height: 100vh;
 }
 
 .card {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  left: calc(50% - (350px / 2));
   width: 350px;
 }
 
@@ -26,7 +29,7 @@ img {
   background-color: #283e50;
   text-align: center;
   color: #ffffff;
-  padding: 20px;
+  padding: 0px 20px 0 20px;
 }
 
 footer {
