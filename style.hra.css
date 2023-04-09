@@ -97,17 +97,6 @@ img.restart {
   background-color: #37a8ef;
 }
 
-.board__field--circle {
-  width: 36;
-  height: 36;
-  /* x: 18;
-  y: 18;
-  r: 10; */
-  stroke: white;
-  stroke-width: 2.5;
-  fill: transparent;
-}
-
 .circle {
   border: 3px solid white;
   border-radius: 50%;
@@ -116,4 +105,19 @@ img.restart {
   height: 24px;
   align-self: center;
   margin-left: 5px;
+}
+
+.board__field--circle {
+  background-image: url("pictures/circle.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 80%;
+}
+
+.board__field--cross {
+  background-image: url("pictures/cross.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 80%;
+
 }
