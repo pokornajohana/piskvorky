@@ -7,6 +7,7 @@ const addClass = (event) => {
     currentPlayer = 'cross';
     document.querySelector('#player').classList.remove('circle');
     document.querySelector('#player').classList.add('cross');
+    event.target.disabled = true;
     return event.target.classList.add('board__field--circle');
   }
 
@@ -14,6 +15,7 @@ const addClass = (event) => {
     currentPlayer = 'circle';
     document.querySelector('#player').classList.remove('cross');
     document.querySelector('#player').classList.add('circle');
+    event.target.disabled = true;
     return event.target.classList.add('board__field--cross');
   }
 };
