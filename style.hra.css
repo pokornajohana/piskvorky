@@ -107,6 +107,33 @@ img.restart {
   margin-left: 5px;
 }
 
+/* .cross {
+  background: rgb(255, 255, 255);
+  height: 100px;
+  position: relative;
+  width: 20px;
+  transform: rotate(45deg);
+}
+
+.cross:after {
+  background: rgb(255, 255, 255);
+  content: "";
+  height: 20px;
+  left: -40px;
+  position: absolute;
+  top: 40px;
+  width: 100px;
+
+} */
+
+.cross {
+  background-image: url("pictures/cross.svg");
+  width: 24px;
+  height: 24px;
+  margin-left: 3px;
+  filter: invert(100%);
+}
+
 .board__field--circle {
   background-image: url("pictures/circle.svg");
   background-repeat: no-repeat;
@@ -119,5 +146,4 @@ img.restart {
   background-repeat: no-repeat;
   background-position: center;
   background-size: 80%;
-
 }
