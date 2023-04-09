@@ -96,3 +96,24 @@ img.restart {
 .restart:hover {
   background-color: #37a8ef;
 }
+
+.board__field--circle {
+  width: 36;
+  height: 36;
+  /* x: 18;
+  y: 18;
+  r: 10; */
+  stroke: white;
+  stroke-width: 2.5;
+  fill: transparent;
+}
+
+.circle {
+  border: 3px solid white;
+  border-radius: 50%;
+  background: none;
+  width: 24px;
+  height: 24px;
+  align-self: center;
+  margin-left: 5px;
+}

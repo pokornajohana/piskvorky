@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.hra.css" />
+    <script type="module" src="index.js"></script>
 
     <title>Piškvorky</title>
   </head>
@@ -14,16 +15,7 @@
       <section class="game_header">
         <div class="play">
           <span>HRAJE:</span>
-          <svg width="36" height="36">
-            <circle
-              cx="18"
-              cy="18"
-              r="10"
-              stroke="white"
-              stroke-width="2.5"
-              fill="transparent"
-            ></circle>
-          </svg>
+          <div class="circle"></div>
         </div>
         <div class="icons">
           <a class="home" href="index.html">
@@ -35,8 +27,8 @@
         </div>
       </section>
       <div class="play-field">
-        <button></button>
-        <button></button>
+        <button class="board__field--circle"></button>
+        <button class="board__field--cross"></button>
         <button></button>
         <button></button>
         <button></button>
