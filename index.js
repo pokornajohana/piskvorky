@@ -58,3 +58,13 @@ document
 document
   .querySelector('button:nth-child(10)')
   .addEventListener('click', addClass);
+
+const restart = (event) => {
+  const prompt = confirm('Opravdu chcete začít znovu?');
+
+  if (prompt === false) {
+    event.preventDefault();
+  }
+};
+const buttonRestart = document.querySelector('.restart');
+buttonRestart.addEventListener('click', restart);
