@@ -1,4 +1,14 @@
-console.log('funguje');
+import { findWinner } from 'https://unpkg.com/piskvorky@0.1.4';
+
+const restart = (event) => {
+  const prompt = confirm('Opravdu chcete začít znovu?');
+
+  if (prompt === false) {
+    event.preventDefault();
+  }
+};
+const buttonRestart = document.querySelector('.restart');
+buttonRestart.addEventListener('click', restart);
 
 let currentPlayer = 'circle';
 
@@ -20,12 +30,22 @@ const addClass = (event) => {
   }
 };
 
-const button = document.querySelectorAll('button');
-console.log(button);
-button.forEach((oneButton) => {
+const buttons = document.querySelectorAll('button');
+console.log(buttons);
+
+buttons.forEach((oneButton) => {
   oneButton.addEventListener('click', addClass);
 });
 
+const pole = Array.from(buttons);
+const button = pole.map((button) => {
+  if (button.querySelector('.boar__field--cross')) return 'x';
+  if (button.querySelector('.boar__field--circle')) return 'o';
+  else return '_';
+});
+console.log(button);
+
+//původní kód pro nasazení funkce pouze pro první řádek
 // document
 //   .querySelector('button:nth-child(1)')
 //   .addEventListener('click', addClass);
@@ -65,13 +85,3 @@ button.forEach((oneButton) => {
 // document
 //   .querySelector('button:nth-child(10)')
 //   .addEventListener('click', addClass);
-
-const restart = (event) => {
-  const prompt = confirm('Opravdu chcete začít znovu?');
-
-  if (prompt === false) {
-    event.preventDefault();
-  }
-};
-const buttonRestart = document.querySelector('.restart');
-buttonRestart.addEventListener('click', restart);
