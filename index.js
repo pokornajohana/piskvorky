@@ -31,19 +31,23 @@ const addClass = (event) => {
 };
 
 const buttons = document.querySelectorAll('button');
-console.log(buttons);
-
-buttons.forEach((oneButton) => {
-  oneButton.addEventListener('click', addClass);
+let pole = Array.from(buttons);
+let herniPole = pole.map((button) => {
+  if (button.classList.contains('.boar__field--cross')) {
+    return 'x';
+  } else if (button.classList.contains('.boar__field--circle')) {
+    return 'o';
+  } else return '_';
 });
-
-const pole = Array.from(buttons);
-const button = pole.map((button) => {
-  if (button.querySelector('.boar__field--cross')) return 'x';
-  if (button.querySelector('.boar__field--circle')) return 'o';
-  else return '_';
-});
-console.log(button);
+console.log(herniPole);
+// const pomocna = () => {
+//   if (findWinner(pole) === 'x') return alert('Vyhrál hráč s křížky');
+//   if (findWinner(pole) === 'o') return alert('Vyhrál hráč s kolečky');
+//   // if (findWinner(pole) === 'tie') return 'Hra skončila remízou';
+//   // if (findWinner(pole) === null)
+//   //   return 'Hra ještě neskončila, zatím nikdo nevyhrál';
+// };
+// console.log(pomocna());
 
 //původní kód pro nasazení funkce pouze pro první řádek
 // document
