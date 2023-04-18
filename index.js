@@ -11,7 +11,6 @@ const addClass = (event) => {
     event.target.disabled = true;
     return event.target.classList.add('board__field--circle');
   }
-
   if (currentPlayer === 'cross') {
     currentPlayer = 'circle';
     document.querySelector('#player').classList.remove('cross');
@@ -19,41 +18,33 @@ const addClass = (event) => {
     event.target.disabled = true;
     return event.target.classList.add('board__field--cross');
   }
+
+  //ARRAY
+  const buttons = document.querySelectorAll('button');
+  // const buttonsArray = Array.from(buttons);
+  const herniPole = buttons.map((button) => {
+    if (button.classList.contains('board__field--cross')) {
+      return 'x';
+    } else if (button.classList.contains('board__field--circle')) {
+      return 'o';
+    } else {
+      return '_';
+    }
+  });
+
+  //WINNER
+  const vitez = findWinner(herniPole);
+  if (vitez === 'o') {
+    alert('Vyhrálo kolečko!');
+  } else if (vitez === 'x') {
+    alert('Vyhrál křížek!');
+  } else if (vitez === 'tie') {
+    alert('Je to remíza!');
+  }
 };
-const buttons = document.querySelectorAll('button');
-buttons.forEach((oneButton) => {
+document.querySelectorAll('button').forEach((oneButton) => {
   oneButton.addEventListener('click', addClass);
 });
-
-//ARRAY
-let pole = Array.from(buttons);
-let herniPole = pole.map((button) => {
-  if (button.classList.contains('board__field--cross')) {
-    return 'x';
-  } else if (button.classList.contains('board__field--circle')) {
-    return 'o';
-  } else {
-    return '_';
-  }
-});
-
-//WINNER
-const vitez = findWinner(herniPole);
-if (vitez === 'o') {
-  alert('Vyhrálo kolečko!');
-  location.reload();
-} else if (vitez === 'x') {
-  alert('Vyhrál křížek!');
-  location.reload();
-} else if (vitez === 'tie') {
-  alert('Je to remíza!');
-}
-
-// // const pomocna = () => {
-// //   if (findWinner(pole) === 'x') return alert('Vyhrál hráč s křížky');
-// //   if (findWinner(pole) === 'o') return alert('Vyhrál hráč s kolečky');
-// //   // if (findWinner(pole) === 'tie') return 'Hra skončila remízou';
-// // console.log(pomocna());
 
 const restart = (event) => {
   const prompt = confirm('Opravdu chcete začít znovu?');
