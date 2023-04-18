@@ -1,15 +1,6 @@
 import { findWinner } from 'https://unpkg.com/piskvorky@0.1.4';
 
-const restart = (event) => {
-  const prompt = confirm('Opravdu chcete začít znovu?');
-
-  if (prompt === false) {
-    event.preventDefault();
-  }
-};
-const buttonRestart = document.querySelector('.restart');
-buttonRestart.addEventListener('click', restart);
-
+//ADD EVENT LISTENER TO BUTTONS
 let currentPlayer = 'circle';
 
 const addClass = (event) => {
@@ -29,63 +20,47 @@ const addClass = (event) => {
     return event.target.classList.add('board__field--cross');
   }
 };
-
 const buttons = document.querySelectorAll('button');
+buttons.forEach((oneButton) => {
+  oneButton.addEventListener('click', addClass);
+});
+
+//ARRAY
 let pole = Array.from(buttons);
 let herniPole = pole.map((button) => {
-  if (button.classList.contains('.boar__field--cross')) {
+  if (button.classList.contains('board__field--cross')) {
     return 'x';
-  } else if (button.classList.contains('.boar__field--circle')) {
+  } else if (button.classList.contains('board__field--circle')) {
     return 'o';
-  } else return '_';
+  } else {
+    return '_';
+  }
 });
-console.log(herniPole);
-// const pomocna = () => {
-//   if (findWinner(pole) === 'x') return alert('Vyhrál hráč s křížky');
-//   if (findWinner(pole) === 'o') return alert('Vyhrál hráč s kolečky');
-//   // if (findWinner(pole) === 'tie') return 'Hra skončila remízou';
-//   // if (findWinner(pole) === null)
-//   //   return 'Hra ještě neskončila, zatím nikdo nevyhrál';
-// };
-// console.log(pomocna());
 
-//původní kód pro nasazení funkce pouze pro první řádek
-// document
-//   .querySelector('button:nth-child(1)')
-//   .addEventListener('click', addClass);
+//WINNER
+const vitez = findWinner(herniPole);
+if (vitez === 'o') {
+  alert('Vyhrálo kolečko!');
+  location.reload();
+} else if (vitez === 'x') {
+  alert('Vyhrál křížek!');
+  location.reload();
+} else if (vitez === 'tie') {
+  alert('Je to remíza!');
+}
 
-// document
-//   .querySelector('button:nth-child(2)')
-//   .addEventListener('click', addClass);
+// // const pomocna = () => {
+// //   if (findWinner(pole) === 'x') return alert('Vyhrál hráč s křížky');
+// //   if (findWinner(pole) === 'o') return alert('Vyhrál hráč s kolečky');
+// //   // if (findWinner(pole) === 'tie') return 'Hra skončila remízou';
+// // console.log(pomocna());
 
-// document
-//   .querySelector('button:nth-child(3)')
-//   .addEventListener('click', addClass);
+const restart = (event) => {
+  const prompt = confirm('Opravdu chcete začít znovu?');
 
-// document
-//   .querySelector('button:nth-child(4)')
-//   .addEventListener('click', addClass);
-
-// document
-//   .querySelector('button:nth-child(5)')
-//   .addEventListener('click', addClass);
-
-// document
-//   .querySelector('button:nth-child(6)')
-//   .addEventListener('click', addClass);
-
-// document
-//   .querySelector('button:nth-child(7)')
-//   .addEventListener('click', addClass);
-
-// document
-//   .querySelector('button:nth-child(8)')
-//   .addEventListener('click', addClass);
-
-// document
-//   .querySelector('button:nth-child(9)')
-//   .addEventListener('click', addClass);
-
-// document
-//   .querySelector('button:nth-child(10)')
-//   .addEventListener('click', addClass);
+  if (prompt === false) {
+    event.preventDefault();
+  }
+};
+const buttonRestart = document.querySelector('.restart');
+buttonRestart.addEventListener('click', restart);
