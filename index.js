@@ -33,16 +33,21 @@ const addClass = (event) => {
 
   //WINNER
   const vitez = findWinner(herniPole);
-  console.log(vitez);
   if (vitez === 'o') {
-    setTimeout(alert('Vyhrálo kolečko!'), 5000);
-    location.reload();
+    setTimeout(function () {
+      alert('Vyhrálo kolečko!');
+      location.reload();
+    }, 100);
   } else if (vitez === 'x') {
-    setTimeout(alert('Vyhrál křížek!'));
-    location.reload();
+    setTimeout(function () {
+      alert('Vyhrál křížek!');
+      location.reload();
+    }, 100);
   } else if (vitez === 'tie') {
-    setTimout(alert('Je to remíza!'));
-    location.reload();
+    setTimeout(function () {
+      alert('Hra skončila nerozhodná.');
+      location.reload();
+    }, 100);
   }
 };
 
