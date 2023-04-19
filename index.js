@@ -35,15 +35,18 @@ const addClass = (event) => {
   const vitez = findWinner(herniPole);
   console.log(vitez);
   if (vitez === 'o') {
-    alert('Vyhrálo kolečko!');
+    setTimeout(alert('Vyhrálo kolečko!'), 5000);
+    location.reload();
   } else if (vitez === 'x') {
-    alert('Vyhrál křížek!');
+    setTimeout(alert('Vyhrál křížek!'));
+    location.reload();
   } else if (vitez === 'tie') {
-    alert('Je to remíza!');
+    setTimout(alert('Je to remíza!'));
+    location.reload();
   }
 };
 
-//USE ,,addclass" FUNCTION FOR ALL BUTTONS
+//USE "addclass" FUNCTION FOR ALL BUTTONS
 document.querySelectorAll('button').forEach((oneButton) => {
   oneButton.addEventListener('click', addClass);
 });
