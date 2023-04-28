@@ -15,6 +15,23 @@ const addClass = (event) => {
     document.querySelector('#player').classList.remove('cross');
     document.querySelector('#player').classList.add('circle');
     event.target.classList.add('board__field--cross');
+    const response = fetch(
+      'https://piskvorky.czechitas-podklady.cz/api/suggest-next-move',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          board: herniPole,
+          player: 'x', //Hledá tah pro křížek
+        }),
+      },
+    );
+    const data = Response.json();
+    const { x, y } = data.position;
+    const field = herniPole[x + y * 10];
+    // field.click();
     event.target.disabled = true;
   }
 
@@ -22,6 +39,7 @@ const addClass = (event) => {
   const buttons = document.querySelectorAll('button');
   const buttonsArray = Array.from(buttons);
   const herniPole = buttonsArray.map((button) => {
+    f;
     if (button.classList.contains('board__field--cross')) {
       return 'x';
     } else if (button.classList.contains('board__field--circle')) {
@@ -66,3 +84,7 @@ const restart = (event) => {
 };
 const buttonRestart = document.querySelector('.restart');
 buttonRestart.addEventListener('click', restart);
+
+//
+//
+//
