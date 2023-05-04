@@ -14,24 +14,7 @@ const addClass = (event) => {
     currentPlayer = 'circle';
     document.querySelector('#player').classList.remove('cross');
     document.querySelector('#player').classList.add('circle');
-    event.target.classList.add('board__field--cross');
-    const response = fetch(
-      'https://piskvorky.czechitas-podklady.cz/api/suggest-next-move',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          board: herniPole,
-          player: 'x', //Hledá tah pro křížek
-        }),
-      },
-    );
-    const data = Response.json();
-    const { x, y } = data.position;
-    const field = herniPole[x + y * 10];
-    // field.click();
+    event.target.classList.add('board__field--cross')
     event.target.disabled = true;
   }
 
@@ -39,7 +22,6 @@ const addClass = (event) => {
   const buttons = document.querySelectorAll('button');
   const buttonsArray = Array.from(buttons);
   const herniPole = buttonsArray.map((button) => {
-    f;
     if (button.classList.contains('board__field--cross')) {
       return 'x';
     } else if (button.classList.contains('board__field--circle')) {
@@ -48,6 +30,25 @@ const addClass = (event) => {
       return '_';
     }
   });
+
+  //FETCH
+  const fields = document.querySelectorAll('button')
+  fetch('https://piskvorky.czechitas-podklady.cz/api/suggest-next-move', {
+  method: 'POST',
+  headers: {
+    'Content-type': 'application/json',
+  },
+  body: JSON.stringify({
+    board: herniPole,
+    player: 'x', // Hledá tah pro křížek.
+  }),
+})
+  .then((response) => response.json())
+  .then((data) => {
+    const { x, y } = data.position // x bude 0 a y bude 1, protože to je jediné volné políčko. x 0 odpovídá prvnímu sloupci a y 1 druhému řádku.
+    const field = fields[x + y * 10] // Najde políčko na příslušné pozici.
+    field.click() // Simulace kliknutí.
+  })
 
   //WINNER
   const vitez = findWinner(herniPole);
@@ -85,6 +86,3 @@ const restart = (event) => {
 const buttonRestart = document.querySelector('.restart');
 buttonRestart.addEventListener('click', restart);
 
-//
-//
-//
