@@ -56,7 +56,7 @@ const addClass = (event) => {
   const vitez = findWinner(herniPole);
   if (vitez === 'o') {
     setTimeout(function () {
-      alert('Vyhrálo kolečko!');
+      alert('Vyhrál jsi!');
       location.reload();
     }, 100);
   } else if (vitez === 'x') {
