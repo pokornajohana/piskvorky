@@ -45,9 +45,11 @@ const addClass = (event) => {
 })
   .then((response) => response.json())
   .then((data) => {
+    if(currentPlayer === 'cross'){
     const { x, y } = data.position // x bude 0 a y bude 1, protože to je jediné volné políčko. x 0 odpovídá prvnímu sloupci a y 1 druhému řádku.
     const field = fields[x + y * 10] // Najde políčko na příslušné pozici.
     field.click() // Simulace kliknutí.
+  }
   })
 
   //WINNER
